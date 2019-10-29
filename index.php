@@ -15,16 +15,24 @@ require('env.php'); ?>
 <body onload="checkAuth()">
 <h1>Home</h1>
 
-<a href="https://accounts.spotify.com/authorize?client_id=<?php echo $client_id ?>&redirect_uri=<?php echo $redirect_uri ?>&scope=user-read-private%20user-read-email&response_type=token&state=34fFs29kd09">Log in to Spotify</a>
+<a href="https://accounts.spotify.com/authorize?client_id=<?php echo $client_id ?>&redirect_uri=<?php echo $redirect_uri ?>&scope=user-read-private%20user-read-email%20user-top-read&response_type=token&state=34fFs29kd09">Log in to Spotify</a>
 
 <br/><br/>
-Data: 
-<div id="response">
+User: 
+<div id="user_response">
 
 </div>
 
+Top Artists: 
+<pre id="artists_response">
+
+</pre>
 
 
+Top Tracks: 
+<pre id="tracks_response">
+
+</pre>
 
 
 <script src="main.js"></script>
