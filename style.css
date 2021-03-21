@@ -1,7 +1,58 @@
+body {
+    font-size: 16pt;
+}
+
 pre {
     white-space: pre-wrap;       /* Since CSS 2.1 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.container {
+    display: flex;
+    max-width: 2000px;
+}
+
+.holder {
+    display: inline-block;
+    width: 33%;
+    height: 500px;
+    padding: 50px;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: green;
+}
+
+.container:nth-of-type(1) .holder:nth-of-type(2) {
+    background-color: pink;
+}
+.container:nth-of-type(2) .holder:nth-of-type(1), .container:nth-of-type(2) .holder:nth-of-type(3) {
+    background-color: pink;
+}
+
+@media screen and (max-width: 800px) {
+    .holder {
+        display: block;
+        width: 100%;
+        height: 500px;
+        margin: 50px;
+        overflow: hidden;
+        box-sizing: border-box;
+    }   
+}
+
+.scroll-y {
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+}
+
+#popularity_response {
+    font-size: 3em;
+}
+
+.taller {
+    height: 600px;
 }
