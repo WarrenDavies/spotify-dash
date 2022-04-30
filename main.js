@@ -5,6 +5,9 @@ function millisToMinutesAndSeconds(millis) {
 }
 
 function checkAuth() {
+    afterTimestamp = new Date(); 
+    afterTimestamp.setMonth(afterTimestamp.getYear()-1);
+
     if (window.location.hash.substr(1) != "") {
         let type = window.location.hash.substr(1);
         var token = type.substring(13, type.search("token_type") - 1);
@@ -21,6 +24,41 @@ function checkAuth() {
                 console.log("player");
                 console.log(data);
                 $("#now-playing").html(JSON.stringify(data));
+            }
+        });
+        $.ajax({
+            url: 'https://api.spotify.com/v1/me/player/recently-played',
+            qs: {
+                // after : afterTimestamp,
+                limit : 500
+            },
+            headers:{'Authorization':'Bearer ' + token},
+            
+            complete: function(data) {
+                console.log("recently played");
+                console.log(data);
+                dataString = JSON.stringify(data);
+                dataBreaks = dataString.replace(/\\n/g, "<br/>");
+                dataBreaks = dataBreaks.replace(/\\/g, " ");
+
+                historyString = "";
+
+                data.responseJSON.items.forEach(function(i, j) {
+                    historyString = historyString + i.played_at + ": "
+                    i.track.artists.forEach(function(k, l) {
+                        historyString = historyString + k.name + ", "
+                    });
+
+                    historyString = historyString + i.track.name + ', ';
+
+                    historyString = historyString + i.track.duration_ms + ', ';
+
+                    historyString = historyString + '<br/>';
+                
+                
+                });
+
+                $("#recently-played").html(historyString);
             }
         });
         $.ajax({

@@ -16,7 +16,7 @@ require('env.php'); ?>
 <body onload="checkAuth()">
 <h1>Home</h1>
 
-<a href="https://accounts.spotify.com/authorize?client_id=<?php echo $client_id ?>&redirect_uri=<?php echo $redirect_uri ?>&scope=user-read-private%20user-read-email%20user-top-read%20user-read-currently-playing%20user-read-playback-state&response_type=token&state=34fFs29kd09">Log in to Spotify</a>
+<a href="https://accounts.spotify.com/authorize?client_id=<?php echo $client_id ?>&redirect_uri=<?php echo $redirect_uri ?>&scope=user-read-private%20user-read-email%20user-top-read%20user-read-currently-playing%20user-read-playback-state%20user-library-read%20user-read-recently-played&response_type=token&state=34fFs29kd09">Log in to Spotify</a>
 
 <div class="container">
   <div class="holder">
@@ -65,6 +65,10 @@ require('env.php'); ?>
     <div id="now-playing"></div>
   </div>
 </div>
+    <h3>Recently Played:</h3>
+    <div id="recently-played"></div>
+
+
 <!-- <script src="main.js"></script> -->
 </body>
 </html>
